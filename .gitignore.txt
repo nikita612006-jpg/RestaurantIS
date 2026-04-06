@@ -1,0 +1,19 @@
+# Папки Visual Studio
+.vs/
+bin/
+obj/
+packages/
+
+# Файлы базы данных
+*.sqlite
+*.db
+
+# Файлы пользовательских настроек
+*.user
+*.suo
+*.userprefs
+
+# Временные файлы
+*.tmp
+*.log
+*.cache
