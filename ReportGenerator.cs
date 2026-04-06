@@ -35,5 +35,22 @@ namespace RestaurantIS
         {
             dgv.DataSource = GetPopularityReport();
         }
+
+        public DataTable GetRevenueReport()
+        {
+            string query = @"
+                SELECT DATE(OrderDate) AS Дата, 
+                       COUNT(Id) AS Количество_заказов, 
+                       SUM(TotalAmount) AS Выручка
+                FROM Orders 
+                WHERE Status='Closed' 
+                GROUP BY DATE(OrderDate) 
+                ORDER BY Дата DESC";
+            
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
+        }
     }
 }
